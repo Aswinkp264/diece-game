@@ -49,7 +49,10 @@ btnRoll.addEventListener("click", function () {
     player1El.classList.toggle("player--active");
   }
 });
-btnHold.addEventListener('click' , function (){
+btnHold.addEventListener("click", function () {
+  //adding cuurent score of active player
 
-
-})
+  score[activePlayer] += currentScore;
+  document.getElementById("score--0");
+  /// check score to minimum hunderd
+});
