@@ -54,5 +54,10 @@ btnHold.addEventListener("click", function () {
 
   score[activePlayer] += currentScore;
   document.getElementById("score--0");
+
+
   /// check score to minimum hunderd
+
+
+  // git 
 });
