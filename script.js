@@ -12,14 +12,28 @@ const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 
 // starting conditions
-score0El.textContent = 0;
-score1El.textContent = 0;
-dieceEl1.classList.add("hidden");
+// score0El.textContent = 0;
+// score1El.textContent = 0;
 
-const score = [0, 0];
-let activePlayer = 0;
-let currentScore = 0;
-let playing = true;
+let score, activePlayer, currentScore, playing;
+
+const init = function () {
+  score = [0, 0];
+  activePlayer = 0;
+  currentScore = 0;
+  playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+
+  dieceEl1.classList.add("hidden");
+  player0El.classList.remove("player--winner");
+  player1El.classList.remove("player--winner");
+  player0El.classList.add("player--active");
+  player1El.classList.remove("player--active");
+};
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
@@ -27,6 +41,7 @@ const switchPlayer = function () {
   player0El.classList.toggle("player--active");
   player1El.classList.toggle("player--active");
 };
+init();
 //rolling diece functionality
 
 btnRoll.addEventListener("click", function () {
@@ -68,7 +83,7 @@ btnHold.addEventListener("click", function () {
 
     /// check score to minimum hunderd
 
-    if (score[activePlayer] >= 20) {
+    if (score[activePlayer] >= 100) {
       playing = false;
       dieceEl1.classList.add("hidden");
       document
@@ -83,3 +98,4 @@ btnHold.addEventListener("click", function () {
     }
   }
 });
+btnNew.addEventListener("click",init);
