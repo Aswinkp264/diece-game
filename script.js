@@ -64,6 +64,16 @@ btnHold.addEventListener("click", function () {
 
   /// check score to minimum hunderd
 
-  // switch player
-  switchPlayer();
+  if (score[activePlayer] >= 20) {
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add("player--winner");
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove(".player--active");
+  } 
+  else {
+    // switch player
+    switchPlayer();
+  }
 });
