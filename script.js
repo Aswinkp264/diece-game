@@ -16,15 +16,22 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 dieceEl1.classList.add("hidden");
 
-let score = [0, 0];
+const score = [0, 0];
 let activePlayer = 0;
 let currentScore = 0;
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  currentScore = 0;
+  player0El.classList.toggle("player--active");
+  player1El.classList.toggle("player--active");
+};
 //rolling diece functionality
 
 btnRoll.addEventListener("click", function () {
   // genarate random diece roll
   const dice = Math.trunc(Math.random() * 6) + 1;
-  console.log(dice);
+  // console.log(dice);
 
   // score storing
 
@@ -42,22 +49,21 @@ btnRoll.addEventListener("click", function () {
     // current0El.textContent = currentScore; //change upcoming session
   } else {
     // switch to next player
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    currentScore = 0;
-    player0El.classList.toggle("player--active");
-    player1El.classList.toggle("player--active");
+    switchPlayer();
   }
 });
 btnHold.addEventListener("click", function () {
+  // console.log("hold button");
+
   //adding cuurent score of active player
 
   score[activePlayer] += currentScore;
-  document.getElementById("score--0");
-
+  // score[1] = score[1]+currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    score[activePlayer];
 
   /// check score to minimum hunderd
 
-
-  // git 
+  // switch player
+  switchPlayer();
 });
